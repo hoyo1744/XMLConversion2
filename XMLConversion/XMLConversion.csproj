@@ -55,6 +55,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="BaseControl\FindString.cs" />
     <Compile Include="BaseControl\TextBoxString.cs" />
     <Compile Include="popUpWindow.xaml.cs">
       <DependentUpon>popUpWindow.xaml</DependentUpon>
@@ -117,6 +118,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="DefineValue\" />
     <Folder Include="ParentControl\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

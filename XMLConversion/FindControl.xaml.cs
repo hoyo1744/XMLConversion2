@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
+using XMLConversion.BaseControl;
 namespace XMLConversion
 {
     /// <summary>
@@ -21,6 +21,7 @@ namespace XMLConversion
     public partial class FindControl : UserControl
     {
         #region 전역변수
+        TextBoxString Source = new TextBoxString();
         #endregion
         public FindControl()
         {
