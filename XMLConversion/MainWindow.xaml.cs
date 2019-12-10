@@ -30,13 +30,12 @@ namespace XMLConversion
         {
             InitializeComponent();
             CreateWorker();
-
             
         }
-
         public void CreateWorker()
         {
             worker = new Worker();
+            worker.Owner = this;
             this.MainGrid.Children.Add(worker);
         }
 

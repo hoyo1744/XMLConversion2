@@ -24,7 +24,7 @@ namespace XMLConversion
         #region 전역변수
         TextBoxString textBeforeTransfer = new TextBoxString();//변환전 텍스트(바인딩 원본)
         TextBoxString textAfterTransfer = new TextBoxString();//변환후 텍스트(바인딩 원본)
-        
+        public Window Owner;
         #endregion
 
         public Worker()
@@ -33,7 +33,7 @@ namespace XMLConversion
             SetDataContext();
 
             
-            
+
             #region Event
             this.Loaded += OnWorkerLoaded;
             this.beforeTextBox.TextChanged += OnTextChanged;
@@ -58,7 +58,10 @@ namespace XMLConversion
 
         void FindCommandHandler(object sender,ExecutedRoutedEventArgs e)
         {
+            
             popUpWindow popUp = new popUpWindow();
+            popUp.Owner= Owner;
+            popUp.Title = "찾기";
             popUp.Show();
         }
         void CheckFindCommandHandler(object sender,CanExecuteRoutedEventArgs e)

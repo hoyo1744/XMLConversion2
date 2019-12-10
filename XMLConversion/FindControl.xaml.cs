@@ -20,11 +20,12 @@ namespace XMLConversion
     /// </summary>
     public partial class FindControl : UserControl
     {
+        #region 전역변수
+        #endregion
         public FindControl()
         {
             InitializeComponent();
             this.Loaded += OnLoaded;
-            
         }
 
         void OnLoaded(object sender,RoutedEventArgs e)

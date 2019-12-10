@@ -21,7 +21,7 @@
     </UserControl.Resources>
     
     
-    <Grid>
+    <Grid Background="GhostWhite">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="200"/>
             <ColumnDefinition Width="100"/>
@@ -53,8 +53,8 @@
             </Grid>
         </StackPanel>
         <StackPanel Orientation="Vertical" Grid.Column="1">
-            <Button x:Name="findButton" Height="10" Width="80" Content="다음찾기"/>
-            <Button x:Name="cancel" Height="10" Width="80" Content="취소"/>
+            <Button x:Name="findButton" Height="20" Width="80" Content="다음찾기"/>
+            <Button x:Name="cancel" Height="20" Width="80" Content="취소"/>
         </StackPanel>
 
 
