@@ -4,20 +4,31 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:XMLConversion"
+             xmlns:m="clr-namespace:XMLConversion.Command"
              mc:Ignorable="d" 
              d:DesignHeight="600" d:DesignWidth="300">
     <Grid x:Name="MainGrid">
         <Grid.RowDefinitions>
+            <RowDefinition Height="20" />
             <RowDefinition Height="20" />
             <RowDefinition />
             <RowDefinition Height="10"/>
             <RowDefinition Height="20"/>
             <RowDefinition />
         </Grid.RowDefinitions>
-        <TextBlock x:Name="beforeTextBlock" Grid.Row="0" Text="변환 전" Background="Red"/>
-        <TextBox x:Name="beforeTextBox" Grid.Row="1" Text="{Binding Path=Text, UpdateSourceTrigger=PropertyChanged}" AcceptsReturn="True"/>
-        <Border Grid.Row="2" Background="Black"/>
-        <TextBlock x:Name="afterTextBlock" Grid.Row="3" Text="변환 후" Background="Red"/>
-        <TextBox x:Name="afterTextBox" Grid.Row="4" IsReadOnly="True" FontStyle="Italic"/>
+        <Menu x:Name="rootMenu" Grid.Row="0">
+            <MenuItem x:Name="editMenu" Header="편집(_F)" Command="m:EditCommand.editCommand">
+                <MenuItem x:Name="newMenu" Header="새 창 열기(U)" Command="ApplicationCommands.New"/>
+                <MenuItem x:Name="findMenu" Header="찾기" Command="ApplicationCommands.Find"/>
+            </MenuItem>
+            <MenuItem x:Name="formatMenu" Header="서식(_O)" Command="m:FormatCommand.formatCommand">
+                <MenuItem x:Name="fontMenu" Header="글꼴(F)" />
+            </MenuItem>
+        </Menu>
+        <TextBlock x:Name="beforeTextBlock" Grid.Row="1" Text="변환 전" Background="Red"/>
+        <TextBox x:Name="beforeTextBox" Grid.Row="2" Text="{Binding Path=Text, UpdateSourceTrigger=PropertyChanged}" AcceptsReturn="True"/>
+        <Border Grid.Row="3" Background="Black"/>
+        <TextBlock x:Name="afterTextBlock" Grid.Row="4" Text="변환 후" Background="Red"/>
+        <TextBox x:Name="afterTextBox" Grid.Row="5" IsReadOnly="True" FontStyle="Italic"/>
     </Grid>
 </UserControl>

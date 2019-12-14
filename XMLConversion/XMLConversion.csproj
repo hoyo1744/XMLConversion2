@@ -24,6 +24,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -57,11 +58,16 @@
     </ApplicationDefinition>
     <Compile Include="BaseControl\FindString.cs" />
     <Compile Include="BaseControl\TextBoxString.cs" />
+    <Compile Include="Command\EditCommand.cs" />
+    <Compile Include="Command\FormatCommand.cs" />
     <Compile Include="popUpWindow.xaml.cs">
       <DependentUpon>popUpWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="FindControl.xaml.cs">
       <DependentUpon>FindControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PropertiesControl.xaml.cs">
+      <DependentUpon>PropertiesControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Worker.xaml.cs">
       <DependentUpon>Worker.xaml</DependentUpon>
@@ -83,6 +89,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="FindControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PropertiesControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
