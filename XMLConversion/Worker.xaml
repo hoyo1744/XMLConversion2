@@ -8,16 +8,16 @@
              d:DesignHeight="600" d:DesignWidth="300">
     <Grid x:Name="MainGrid">
         <Grid.RowDefinitions>
+            <RowDefinition Height="20" />
             <RowDefinition />
             <RowDefinition Height="10"/>
-            <RowDefinition Height="10"/>
+            <RowDefinition Height="20"/>
             <RowDefinition />
         </Grid.RowDefinitions>
-        <TextBox x:Name="beforeTextBox" Grid.Row="0" Text="{Binding Path=Text, UpdateSourceTrigger=PropertyChanged}" AcceptsReturn="True"/>
-        <Border Grid.Row="1" Background="Black"/>
-        <StackPanel Orientation="Horizontal">
-            
-        </StackPanel>
-        <TextBox x:Name="afterTextBox" Grid.Row="3" IsReadOnly="True"/>
+        <TextBlock x:Name="beforeTextBlock" Grid.Row="0" Text="변환 전" Background="Red"/>
+        <TextBox x:Name="beforeTextBox" Grid.Row="1" Text="{Binding Path=Text, UpdateSourceTrigger=PropertyChanged}" AcceptsReturn="True"/>
+        <Border Grid.Row="2" Background="Black"/>
+        <TextBlock x:Name="afterTextBlock" Grid.Row="3" Text="변환 후" Background="Red"/>
+        <TextBox x:Name="afterTextBox" Grid.Row="4" IsReadOnly="True" FontStyle="Italic"/>
     </Grid>
 </UserControl>

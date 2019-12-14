@@ -13,6 +13,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using XMLConversion.BaseControl;
+using System.Xml;
+using System.Xml.Linq;
 
 namespace XMLConversion
 {
@@ -57,8 +59,7 @@ namespace XMLConversion
         }
 
         void FindCommandHandler(object sender,ExecutedRoutedEventArgs e)
-        {
-            
+        {   
             popUpWindow popUp = new popUpWindow();
             popUp.Owner= Owner;
             popUp.Title = "찾기";
@@ -68,8 +69,6 @@ namespace XMLConversion
         {
             e.CanExecute = true;
         }
-
-
         // 호용 : 객체별 DataContext 설정하기
         void SetDataContext()
         {
@@ -104,10 +103,27 @@ namespace XMLConversion
 
         void TrasnferXMLText()
         {
-            //step1: 개행
-            afterTextBox.Text= textBeforeTransfer.Text.Replace(">", ">\n");
+           /*xDocument객체로 처리하기*/
+            afterTextBox.Text = textBeforeTransfer.Text;
+            string str = afterTextBox.Text;
+            
+            try
+            {
+                XDocument xdoc = XDocument.Parse(str);
+                afterTextBox.Text = xdoc.ToString();
+            }
+            catch(Exception e)
+            {
+                if (MessageBox.Show("올바른 XML 형식이 아닙니다.", "Error", MessageBoxButton.OK, MessageBoxImage.Error, MessageBoxResult.OK) == MessageBoxResult.OK)
+                {
+                    afterTextBox.Text = string.Empty;
+                    return;
+                }
+            }
+            
+            
 
-            //step2: 들여쓰기
+        
 
         }
         bool CheckXMLText(string strText)
