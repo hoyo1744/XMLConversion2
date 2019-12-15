@@ -16,6 +16,7 @@ using XMLConversion.BaseControl;
 using System.Xml;
 using System.Xml.Linq;
 using XMLConversion.Command;
+using XMLConversion.Windows;
 
 namespace XMLConversion
 {
@@ -99,7 +100,11 @@ namespace XMLConversion
         {
             if(e.Key==Key.F)
             {
-                
+                //MessageBox.Show("font");
+                FontControl fontControl = new FontControl();
+                NoSizeFixedWindow sfw = new NoSizeFixedWindow(fontControl);
+                sfw.Title = "글꼴";
+                sfw.ShowDialog();
             }
         }
         void EditCommandHandler(object sender, ExecutedRoutedEventArgs e)

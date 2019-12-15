@@ -7,8 +7,8 @@
         mc:Ignorable="d"
         WindowStartupLocation="CenterOwner"
         ResizeMode="NoResize"
-        SizeToContent="WidthAndHeight"
-        Height="200" Width="300">
+        SizeToContent="WidthAndHeight"  
+        >
     <Grid x:Name="MainGrid">
         <Border x:Name="borderBody"/>
     </Grid>

@@ -56,23 +56,43 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AdvanceControl\ColorPicker.xaml.cs">
+      <DependentUpon>ColorPicker.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BaseControl\ColorComboBox.cs" />
+    <Compile Include="BaseControl\AvailableColors.cs" />
     <Compile Include="BaseControl\FindString.cs" />
+    <Compile Include="BaseControl\FontColor.cs" />
     <Compile Include="BaseControl\TextBoxString.cs" />
     <Compile Include="Command\EditCommand.cs" />
     <Compile Include="Command\FormatCommand.cs" />
-    <Compile Include="popUpWindow.xaml.cs">
+    <Compile Include="AdvanceControl\FontControl.xaml.cs">
+      <DependentUpon>FontControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\popUpWindow.xaml.cs">
       <DependentUpon>popUpWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="FindControl.xaml.cs">
+    <Compile Include="AdvanceControl\FindControl.xaml.cs">
       <DependentUpon>FindControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="PropertiesControl.xaml.cs">
-      <DependentUpon>PropertiesControl.xaml</DependentUpon>
+    <Compile Include="Windows\NoSizeFixedWindow.xaml.cs">
+      <DependentUpon>NoSizeFixedWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\SizeFixedWindos.xaml.cs">
+      <DependentUpon>SizeFixedWindos.xaml</DependentUpon>
     </Compile>
     <Compile Include="Worker.xaml.cs">
       <DependentUpon>Worker.xaml</DependentUpon>
     </Compile>
-    <Page Include="popUpWindow.xaml">
+    <Page Include="AdvanceControl\ColorPicker.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AdvanceControl\FontControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\popUpWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -88,11 +108,15 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="FindControl.xaml">
+    <Page Include="AdvanceControl\FindControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="PropertiesControl.xaml">
+    <Page Include="Windows\NoSizeFixedWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\SizeFixedWindos.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -129,7 +153,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="DefineValue\" />
-    <Folder Include="ParentControl\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

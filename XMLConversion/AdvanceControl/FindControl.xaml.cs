@@ -12,17 +12,27 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
+using XMLConversion.BaseControl;
 namespace XMLConversion
 {
     /// <summary>
-    /// PropertiesControl.xaml에 대한 상호 작용 논리
+    /// FindControl.xaml에 대한 상호 작용 논리
     /// </summary>
-    public partial class PropertiesControl : UserControl
+    public partial class FindControl : UserControl
     {
-        public PropertiesControl()
+        #region 전역변수
+        TextBoxString Source = new TextBoxString();
+        public Window Owner;
+        #endregion
+        public FindControl()
         {
             InitializeComponent();
+            this.Loaded += OnLoaded;
+        }
+
+        void OnLoaded(object sender,RoutedEventArgs e)
+        {
+
         }
     }
 }

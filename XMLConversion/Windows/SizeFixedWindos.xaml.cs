@@ -10,28 +10,18 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
-using XMLConversion.BaseControl;
-namespace XMLConversion
+
+namespace XMLConversion.Windows
 {
     /// <summary>
-    /// FindControl.xaml에 대한 상호 작용 논리
+    /// SizeFixedWindos.xaml에 대한 상호 작용 논리
     /// </summary>
-    public partial class FindControl : UserControl
+    public partial class SizeFixedWindos : Window
     {
-        #region 전역변수
-        TextBoxString Source = new TextBoxString();
-        #endregion
-        public FindControl()
+        public SizeFixedWindos()
         {
             InitializeComponent();
-            this.Loaded += OnLoaded;
-        }
-
-        void OnLoaded(object sender,RoutedEventArgs e)
-        {
-
         }
     }
 }
