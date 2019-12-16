@@ -7,18 +7,18 @@
              mc:Ignorable="d" 
              Height="32" Width="190" >
     <Grid x:Name="MainGrid">
-        <ComboBox x:Name="colorComboBox" ItemsSource="{Binding Path=FontColorList}" SelectedValue="{Binding Path=SelectedFontColor,Mode=TwoWay}"  IsSynchronizedWithCurrentItem="True">
+        <ComboBox Name="colorComboBox" ItemsSource="{Binding Path=FontColorList}" 
+                 SelectedItem="{Binding Path=SelectedFontColor}"
+                 IsSynchronizedWithCurrentItem="True"  >
             <ComboBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
-                        <TextBlock>
-                            <TextBlock Width="20" Height="20" Margin="5" Background="{Binding Name}"/>
-                            <TextBlock Text="{Binding Path=Name}" Margin="5" />
-                        </TextBlock>
+                        <TextBlock Width="20" Height="20" Margin="5" Background="{Binding Name}"/>
+                        <TextBlock Text="{Binding Name}" Margin="5" />
                     </StackPanel>
                 </DataTemplate>
             </ComboBox.ItemTemplate>
         </ComboBox>
-            
+
     </Grid>
 </UserControl>

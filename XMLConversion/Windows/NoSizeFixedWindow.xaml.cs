@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using XMLConversion;
 
 namespace XMLConversion.Windows
 {
@@ -22,7 +23,16 @@ namespace XMLConversion.Windows
         public NoSizeFixedWindow()
         {
             InitializeComponent();
+            #region Event
+            this.Loaded += OnLoaded;
+            #endregion
         }
+
+        private void OnLoaded(object sender, RoutedEventArgs e)
+        {
+            this.colorPicker.colorComboBox.SelectedIndex = 7;
+        }
+
         public NoSizeFixedWindow(UserControl obj)
         {
             InitializeComponent();

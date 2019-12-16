@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Media;
+using XMLConversion;
 
 namespace XMLConversion.BaseControl
 {
@@ -11,10 +12,11 @@ namespace XMLConversion.BaseControl
     {
         public string Name { get; set; }
         public SolidColorBrush Brush { get; set; }
+
         public FontColor(string name, SolidColorBrush brush)
         {
-            this.Name = name;
-            this.Brush = brush;
+            Name = name;
+            Brush = brush;
         }
 
         public override bool Equals(System.Object obj)
@@ -52,6 +54,5 @@ namespace XMLConversion.BaseControl
         {
             return "FontColor [Color=" + this.Name + ", " + this.Brush.ToString() + "]";
         }
-
     }
 }

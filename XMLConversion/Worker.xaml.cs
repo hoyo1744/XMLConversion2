@@ -101,8 +101,8 @@ namespace XMLConversion
             if(e.Key==Key.F)
             {
                 //MessageBox.Show("font");
-                FontControl fontControl = new FontControl();
-                NoSizeFixedWindow sfw = new NoSizeFixedWindow(fontControl);
+                //FontControl fontControl = new FontControl();
+                NoSizeFixedWindow sfw = new NoSizeFixedWindow();
                 sfw.Title = "글꼴";
                 sfw.ShowDialog();
             }

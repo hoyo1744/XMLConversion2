@@ -6,12 +6,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Media;
+using XMLConversion;
 
 namespace XMLConversion.BaseControl
 {
     // ColorComboBox는 ColorPicker에서의 데이터 원본
     class ColorComboBox : INotifyPropertyChanged
     {
+        private ReadOnlyCollection<FontColor> fontColorList;
+        private FontColor selectedFontColor;
+        public ColorComboBox()
+        {
+            this.selectedFontColor = AvailableColors.GetFontColor(Colors.Black);
+            this.fontColorList = new ReadOnlyCollection<FontColor>(new AvailableColors());
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
         public void Notify(string PropName)
         {
@@ -19,14 +28,9 @@ namespace XMLConversion.BaseControl
                 PropertyChanged(this, new PropertyChangedEventArgs(PropName));
         }
 
-        private ReadOnlyCollection<FontColor> fontColorList;
-        private FontColor selectedFontColor;
+  
 
-        public ColorComboBox()
-        {
-            this.selectedFontColor = AvailableColors.GetFontColor(Colors.Black);
-            this.fontColorList = new ReadOnlyCollection<FontColor>(new AvailableColors());
-        }
+    
 
         public ReadOnlyCollection<FontColor> FontColorList
         {

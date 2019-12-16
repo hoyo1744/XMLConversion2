@@ -6,11 +6,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Media;
 using System.ComponentModel;
+using XMLConversion;
 
 namespace XMLConversion.BaseControl
 {
     class AvailableColors : List<FontColor>
     {
+        #region Conversion Utils Static Methods
         public static FontColor GetFontColor(SolidColorBrush b)
         {
             AvailableColors brushList = new AvailableColors();
@@ -46,6 +48,7 @@ namespace XMLConversion.BaseControl
 
             return idx;
         }
+        #endregion
 
         public AvailableColors()
             : base()
@@ -94,5 +97,6 @@ namespace XMLConversion.BaseControl
             }
 
         }
+
     }
 }

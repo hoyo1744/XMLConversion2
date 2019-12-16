@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using XMLConversion.BaseControl;
+using XMLConversion;
 
 namespace XMLConversion.AdvanceControl
 {
@@ -21,16 +22,24 @@ namespace XMLConversion.AdvanceControl
     /// </summary>
     public partial class ColorPicker : UserControl
     {
-        ColorComboBox source;
-       
-  
+        private ColorComboBox source;
+
+        public static readonly RoutedEvent ColorChangedEvent = EventManager.RegisterRoutedEvent(
+            "ColorChanged", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(ColorPicker));
+
+        public static readonly DependencyProperty SelectedColorProperty = DependencyProperty.Register(
+            "SelectedColor", typeof(FontColor), typeof(ColorPicker), new UIPropertyMetadata(null));
+
         public ColorPicker()
         {
             InitializeComponent();
+
             Init();
             SetContextData();
+            this.source= new ColorComboBox();
+            this.DataContext = this.source;
 
-            
+
             #region Event
             this.colorComboBox.DropDownClosed += OnDropDownClosed;
             #endregion
