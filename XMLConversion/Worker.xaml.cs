@@ -36,10 +36,9 @@ namespace XMLConversion
             InitializeComponent();
             SetDataContext();
 
-            
+
 
             #region Event
-            this.Loaded += OnWorkerLoaded;
             this.beforeTextBox.TextChanged += OnTextChanged;
             this.afterTextBox.TextChanged += OnTextChanged;
             this.fontMenu.KeyDown += OnfontMenuKeyDown;
@@ -89,32 +88,30 @@ namespace XMLConversion
 
         }
 
-        void OnNewMenuKeyDown(object sender,KeyEventArgs e)
+        void OnNewMenuKeyDown(object sender, KeyEventArgs e)
         {
-            if(e.Key==Key.U)
+            if (e.Key == Key.U)
             {
 
             }
         }
-        void OnfontMenuKeyDown(object sender,KeyEventArgs e)
+        void OnfontMenuKeyDown(object sender, KeyEventArgs e)
         {
-            if(e.Key==Key.F)
-            {
-                //MessageBox.Show("font");
-                //FontControl fontControl = new FontControl();
-                NoSizeFixedWindow sfw = new NoSizeFixedWindow();
-                sfw.Title = "글꼴";
-                sfw.ShowDialog();
-            }
+            if (e.Key == Key.F)
+            { }
+            FontWindow fw = new FontWindow();
+            fw.Title = "글꼴";
+            fw.ShowDialog();
         }
+
         void EditCommandHandler(object sender, ExecutedRoutedEventArgs e)
         {
-            if(this.editMenu.IsCheckable)
+            if (this.editMenu.IsCheckable)
                 this.editMenu.IsChecked = true;
         }
         void FormatCommandHandler(object sender, ExecutedRoutedEventArgs e)
         {
-            if(this.formatMenu.IsCheckable)
+            if (this.formatMenu.IsCheckable)
                 this.formatMenu.IsChecked = true;
         }
         void CheckFormatCommandHandler(object sender, CanExecuteRoutedEventArgs e)
@@ -137,10 +134,10 @@ namespace XMLConversion
         {
             MessageBox.Show("New");
         }
-        void FindCommandHandler(object sender,ExecutedRoutedEventArgs e)
-        {   
+        void FindCommandHandler(object sender, ExecutedRoutedEventArgs e)
+        {
             popUpWindow popUp = new popUpWindow();
-            popUp.Owner= Owner;
+            popUp.Owner = Owner;
             popUp.Title = "찾기";
             popUp.Show();
         }
@@ -148,9 +145,9 @@ namespace XMLConversion
         {
             this.beforeTextBox.DataContext = textBeforeTransfer;
         }
-        void OnTextChanged(Object sender,RoutedEventArgs e)
+        void OnTextChanged(Object sender, RoutedEventArgs e)
         {
-            if(sender==beforeTextBox)
+            if (sender == beforeTextBox)
             {
                 if (textBeforeTransfer.Text.Length == 0)
                 {
@@ -170,16 +167,16 @@ namespace XMLConversion
         }
         void TrasnferXMLText()
         {
-           /*xDocument객체로 처리하기*/
+            /*xDocument객체로 처리하기*/
             afterTextBox.Text = textBeforeTransfer.Text;
             string str = afterTextBox.Text;
-            
+
             try
             {
                 XDocument xdoc = XDocument.Parse(str);
                 afterTextBox.Text = xdoc.ToString();
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 if (MessageBox.Show("올바른 XML 형식이 아닙니다.", "Error", MessageBoxButton.OK, MessageBoxImage.Error, MessageBoxResult.OK) == MessageBoxResult.OK)
                 {
@@ -193,11 +190,11 @@ namespace XMLConversion
             bool ret = true;
             Stack<char> pstack = new Stack<char>();
 
-            for(int i=0;i<strText.Length;i++)
+            for (int i = 0; i < strText.Length; i++)
             {
                 if (strText[i] == '<')
                     pstack.Push(strText[i]);
-                else if(strText[i]=='>')
+                else if (strText[i] == '>')
                 {
                     if (pstack.Count > 0)
                         pstack.Pop();
@@ -211,12 +208,8 @@ namespace XMLConversion
             if (pstack.Count != 0)
                 ret = false;
             return ret;
-        }
-        void OnWorkerLoaded(Object sender,RoutedEventArgs e)
-        {
 
         }
-
-      
     }
 }
+

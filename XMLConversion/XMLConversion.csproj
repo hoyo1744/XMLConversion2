@@ -63,11 +63,15 @@
     <Compile Include="BaseControl\AvailableColors.cs" />
     <Compile Include="BaseControl\FindString.cs" />
     <Compile Include="BaseControl\FontColor.cs" />
+    <Compile Include="BaseControl\FontInfo.cs" />
     <Compile Include="BaseControl\TextBoxString.cs" />
     <Compile Include="Command\EditCommand.cs" />
     <Compile Include="Command\FormatCommand.cs" />
     <Compile Include="AdvanceControl\FontControl.xaml.cs">
       <DependentUpon>FontControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\FontWindow.xaml.cs">
+      <DependentUpon>FontWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\popUpWindow.xaml.cs">
       <DependentUpon>popUpWindow.xaml</DependentUpon>
@@ -89,6 +93,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="AdvanceControl\FontControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\FontWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

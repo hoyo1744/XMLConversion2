@@ -4,13 +4,33 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:XMLConversion.AdvanceControl"
+             xmlns:scm="clr-namespace:System.ComponentModel;assembly=WindowsBase"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="500">
-    <Grid x:Name="MainGrid">
+    <UserControl.Resources>
+        <DataTemplate x:Key="fontFamilyData">
+            <TextBlock Text="{Binding Source}"/>
+        </DataTemplate>
+        <DataTemplate x:Key="fontTypeData" DataType="{x:Type FamilyTypeface}">
+            <WrapPanel>
+                <TextBlock Text="{Binding Style}"/>
+                <TextBlock Text="-"/>
+                <TextBlock Text="{Binding Weight}" />
+                <TextBlock Text="-"/>
+                <TextBlock Text="{Binding Stretch}" />
+            </WrapPanel>
+        </DataTemplate>
+        <CollectionViewSource Source="{Binding Source={x:Static Fonts.SystemFontFamilies}}" x:Key="familyCollection">
+            <CollectionViewSource.SortDescriptions>
+                <scm:SortDescription PropertyName="Source" Direction="Ascending" />
+            </CollectionViewSource.SortDescriptions>
+        </CollectionViewSource>
+    </UserControl.Resources>
+    <Grid x:Name="MainGrid" DataContext="{StaticResource familyCollection}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="200"/>
-            <ColumnDefinition Width="180"/>
-            <ColumnDefinition Width="120"/>
+            <ColumnDefinition Width="160"/>
+            <ColumnDefinition Width="160"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="25"/>
@@ -20,10 +40,31 @@
         <!--Row=0-->
         <TextBlock x:Name="fontFamilyTextBlock" Text="글꼴" Grid.Row="0" Grid.Column="0" TextAlignment="Left" Padding="10"/>
         <TextBlock x:Name="fontStyleTextBlock" Text="글꼴 스타일" Grid.Row="0" Grid.Column="1" TextAlignment="Left" Padding="10"/>
-        <TextBlock x:Name="fontSizeTextBlock" Text="크기" Grid.Row="0" Grid.Column="2" TextAlignment="Left" Padding="10"/>
-        
+        <TextBlock x:Name="fontSizeTextBlock" Text="예시" Grid.Row="0" Grid.Column="2" TextAlignment="Left" Padding="10"/>
+
         <!--Row==1-->
-        
+        <ListBox Grid.Row="1" Grid.Column="0" x:Name="fontFamilyList" ItemsSource="{Binding}" ItemTemplate="{StaticResource fontFamilyData}"/>
+        <ListBox Grid.Row="1" Grid.Column="1" x:Name="fontTypeList" ItemsSource="{Binding FamilyTypefaces}" ItemTemplate="{StaticResource fontTypeData}"/>
+        <Grid Grid.Row="1" Grid.Column="2"   >
+            <TextBox x:Name="sampleTextBox"
+            Padding="20"
+            FontSize="{Binding Value, ElementName=fontSizeSlider }"
+            FontFamily="{Binding Source, Source={StaticResource familyCollection}}" 
+            FontWeight="{Binding SelectedItem.Weight, ElementName=fontTypeList}" 
+            FontStretch="{Binding SelectedItem.Stretch, ElementName=fontTypeList}" 
+            FontStyle="{Binding SelectedItem.Style, ElementName=fontTypeList}"
+            Text="abcdef가나다라" Background="#FFFFFFF7" AcceptsReturn="True" TextAlignment="Center" TextWrapping="Wrap" HorizontalAlignment="Left" Width="139"/>
+            <Slider x:Name="fontSizeSlider" 
+                		Maximum="18" Value="10" 
+                        Minimum="8"
+                		SmallChange="0.5" LargeChange="2" HorizontalAlignment="Left" 
+                		VerticalAlignment="Bottom" Width="118" Margin="10,0,0,5" 
+                        TickPlacement="BottomRight" 
+                        AutoToolTipPlacement ="TopLeft" />
+        </Grid>
+
+
+
         <!--Row==2-->
         <local:ColorPicker x:Name="colorPicker" Grid.Row="2"/>
 

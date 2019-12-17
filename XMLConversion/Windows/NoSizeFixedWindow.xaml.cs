@@ -25,19 +25,29 @@ namespace XMLConversion.Windows
             InitializeComponent();
             #region Event
             this.Loaded += OnLoaded;
+            this.KeyDown += OnPopUpWindowKeyDown;
             #endregion
         }
-
-        private void OnLoaded(object sender, RoutedEventArgs e)
-        {
-            this.colorPicker.colorComboBox.SelectedIndex = 7;
-        }
-
         public NoSizeFixedWindow(UserControl obj)
         {
             InitializeComponent();
             this.MainGrid.Children.Add(obj);
+            #region Event
+            this.Loaded += OnLoaded;
+            this.KeyDown += OnPopUpWindowKeyDown;
+            #endregion
         }
 
+        private void OnPopUpWindowKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Escape)
+                this.Close();
+        }
+
+        private void OnLoaded(object sender, RoutedEventArgs e)
+        {
+        }
+
+    
     }
 }

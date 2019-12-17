@@ -11,42 +11,36 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using XMLConversion;
 
-
-namespace XMLConversion
+namespace XMLConversion.Windows
 {
     /// <summary>
-    /// FindWindow.xaml에 대한 상호 작용 논리
+    /// FontWindow.xaml에 대한 상호 작용 논리
     /// </summary>
-    public partial class popUpWindow : Window
+    public partial class FontWindow : Window
     {
-        public popUpWindow()
+        public FontWindow()
         {
             InitializeComponent();
+
 
             #region Event
             this.Loaded += OnLoaded;
             this.KeyDown += OnPopUpWindowKeyDown;
             #endregion
         }
-        public popUpWindow(object sender)
-        {
-            InitializeComponent();
 
-            #region Event
-            this.Loaded += OnLoaded;
-            #endregion
-        }
-        void OnPopUpWindowKeyDown(object sender,KeyEventArgs e)
+        private void OnPopUpWindowKeyDown(object sender, KeyEventArgs e)
         {
-            if(e.Key==Key.Escape)
+            if (e.Key == Key.Escape)
                 this.Close();
         }
-        void OnLoaded(object sender,RoutedEventArgs e)
+
+        private void OnLoaded(object sender, RoutedEventArgs e)
         {
-            FindControl findControl = new FindControl();
-            this.MainGrid.Children.Add(findControl);
+            this.FontControl.colorPicker.colorComboBox.SelectedIndex = 7;
+            
         }
+        
     }
 }

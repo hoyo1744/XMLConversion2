@@ -1,14 +1,14 @@
-﻿<Window x:Class="XMLConversion.Windows.NoSizeFixedWindow"
+﻿<Window x:Class="XMLConversion.Windows.FontWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:XMLConversion.AdvanceControl"
-        
+        xmlns:local="clr-namespace:XMLConversion"
         mc:Ignorable="d"
-        SizeToContent="WidthAndHeight"  
-        ResizeMode="NoResize">
+        Height="380" Width="592" WindowStartupLocation="CenterOwner" ResizeMode="NoResize"
+        Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" 
+        Title="FontWindow">
     <Grid x:Name="MainGrid">
-        
+        <local:FontControl x:Name="FontControl"/>
     </Grid>
 </Window>

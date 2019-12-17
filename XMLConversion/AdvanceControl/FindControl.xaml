@@ -5,8 +5,9 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:XMLConversion"
              mc:Ignorable="d" 
+             Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"
              d:DesignHeight="200" d:DesignWidth="300">
-
+            
     <UserControl.Resources>
         <Style TargetType="{x:Type Button}">
             <Setter Property="Margin" Value="2" />
