@@ -53,20 +53,22 @@
             FontWeight="{Binding SelectedItem.Weight, ElementName=fontTypeList}" 
             FontStretch="{Binding SelectedItem.Stretch, ElementName=fontTypeList}" 
             FontStyle="{Binding SelectedItem.Style, ElementName=fontTypeList}"
-            Text="abcdef가나다라" Background="#FFFFFFF7" AcceptsReturn="True" TextAlignment="Center" TextWrapping="Wrap" HorizontalAlignment="Left" Width="139"/>
+            Text="abcdef가나다라" Background="#FFFFFFF7" AcceptsReturn="True" TextAlignment="Center" TextWrapping="Wrap" HorizontalAlignment="Left" Width="160" />
             <Slider x:Name="fontSizeSlider" 
                 		Maximum="18" Value="10" 
                         Minimum="8"
                 		SmallChange="0.5" LargeChange="2" HorizontalAlignment="Left" 
-                		VerticalAlignment="Bottom" Width="118" Margin="10,0,0,5" 
+                		VerticalAlignment="Bottom" Width="140" Margin="10,0,0,5" 
                         TickPlacement="BottomRight" 
                         AutoToolTipPlacement ="TopLeft" />
         </Grid>
-
-
-
         <!--Row==2-->
         <local:ColorPicker x:Name="colorPicker" Grid.Row="2"/>
+        <StackPanel Grid.Row="2" Grid.Column="2" Orientation="Vertical">
+            <Button x:Name="confirmButton" Content="확인" Margin="10,10,10,5"/>
+            <Button x:Name="cancelButton" Content="취소" Margin="10,5,10,10"/>
+        </StackPanel>
+
 
 
 

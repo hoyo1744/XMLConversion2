@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using XMLConversion.BaseControl;
 
 namespace XMLConversion
 {
@@ -20,6 +21,19 @@ namespace XMLConversion
     /// </summary>
     public partial class FontControl : UserControl
     {
+        public FontInfo SelectedFont
+        {
+            get
+            {
+                //return new FontInfo(this.txtSampleText.FontFamily,
+                //                    this.txtSampleText.FontSize,
+                //                    this.txtSampleText.FontStyle,
+                //                    this.txtSampleText.FontStretch,
+                //                    this.txtSampleText.FontWeight,
+                //                    this.colorPicker.SelectedColor.Brush);
+            }
+
+        }
         #region 전역변수
         public Window owner;
         #endregion
