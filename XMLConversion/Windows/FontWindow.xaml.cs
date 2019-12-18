@@ -64,11 +64,11 @@ namespace XMLConversion.Windows
 
         private void OnLoaded(object sender, RoutedEventArgs e)
         {
-            this.ApplyFontColor();
+            this.ApplyFontColor();  
             this.ApplyFontName();
             this.ApplyFontSize();
             this.ApplyFontTypeFace();
-            this.FontControl.colorPicker.colorComboBox.SelectedIndex = 1;
+            
         }
 
         private void ApplyFontColor()

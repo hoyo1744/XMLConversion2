@@ -22,7 +22,7 @@
     </UserControl.Resources>
     
     
-    <Grid Background="GhostWhite">
+    <Grid Background="GhostWhite" x:Name="MainGrid">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="200"/>
             <ColumnDefinition Width="100"/>
@@ -31,20 +31,20 @@
         <StackPanel Orientation="Vertical" Grid.Column="0">
             <StackPanel Orientation="Horizontal">
                 <TextBlock x:Name="findTextBlock" Text="찾을 내용" VerticalAlignment="Center"/>
-                <TextBox x:Name="findTextBox" Width="150" />
+                <TextBox x:Name="findTextBox" Width="150" Text="{Binding Path=Text}"/>
             </StackPanel>
             <Grid>
                 
                 <StackPanel Orientation="Vertical">
                     <StackPanel Orientation="Horizontal">
-                        <CheckBox x:Name="textCheckBox"/>
+                        <CheckBox x:Name="textCheckBox" IsChecked="{Binding Path=CheckSmallAndBig}"/>
                         <TextBlock x:Name="textTextBlock"  Text="대/소문자구문"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
                         <GroupBox Header="방향">
                             <StackPanel Orientation="Horizontal">
-                                <RadioButton Content="위로"/>
-                                <RadioButton Content="아래로"/>
+                                <RadioButton Content="위로" IsChecked="{Binding Path=CheckUp}"/>
+                                <RadioButton Content="아래로" IsChecked="{Binding Path=CheckDown}"/>
                             </StackPanel>
                         </GroupBox>
                     </StackPanel>
@@ -55,7 +55,7 @@
         </StackPanel>
         <StackPanel Orientation="Vertical" Grid.Column="1">
             <Button x:Name="findButton" Height="20" Width="80" Content="다음찾기"/>
-            <Button x:Name="cancel" Height="20" Width="80" Content="취소"/>
+            <Button x:Name="cancelButton" Height="20" Width="80" Content="취소"/>
         </StackPanel>
 
 

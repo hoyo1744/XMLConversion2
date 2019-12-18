@@ -42,6 +42,7 @@ namespace XMLConversion
             this.beforeTextBox.TextChanged += OnTextChanged;
             this.afterTextBox.TextChanged += OnTextChanged;
             this.fontMenu.KeyDown += OnfontMenuKeyDown;
+            this.fontMenu.Click += OnfontMenuClick;
             this.newMenu.KeyDown += OnNewMenuKeyDown;
             #endregion
 
@@ -51,24 +52,28 @@ namespace XMLConversion
             cbEdit.Executed += EditCommandHandler;
             cbEdit.CanExecute += CheckEditCommandHandler;
             this.CommandBindings.Add(cbEdit);
+            
 
             // 서식 명령
             CommandBinding cbFormat = new CommandBinding(FormatCommand.formatCommand);
             cbFormat.Executed += FormatCommandHandler;
             cbFormat.CanExecute += CheckFormatCommandHandler;
             this.CommandBindings.Add(cbFormat);
+           
 
             // 찾기 명령
             CommandBinding cbFind = new CommandBinding(ApplicationCommands.Find);
             cbFind.Executed += FindCommandHandler;
             cbFind.CanExecute += CheckFindCommandHandler;
             this.CommandBindings.Add(cbFind);
+            this.beforeTextBox.CommandBindings.Add(cbFind);
 
             // 새 창 생성 명령
             CommandBinding cbNew = new CommandBinding(ApplicationCommands.New);
             cbNew.Executed += NewCommandHandler;
             cbNew.CanExecute += CheckNewCommandHandler;
             this.CommandBindings.Add(cbNew);
+            this.beforeTextBox.CommandBindings.Add(cbNew);
 
 
             #endregion
@@ -93,6 +98,23 @@ namespace XMLConversion
             if (e.Key == Key.U)
             {
 
+            }
+        }
+
+        void OnfontMenuClick(object sender, RoutedEventArgs e)
+        {
+            FontWindow fw = new FontWindow();
+            fw.Title = "글꼴";
+            fw.Owner = Owner;
+            fw.Font = FontInfo.GetControlFont(this.beforeTextBox);
+            if (fw.ShowDialog() == true)
+            {
+                FontInfo selectedFont = fw.Font;
+                if (selectedFont != null)
+                {
+                    FontInfo.ApplyFont(this.beforeTextBox, selectedFont);
+                    FontInfo.ApplyFont(this.afterTextBox, selectedFont);
+                }
             }
         }
         void OnfontMenuKeyDown(object sender, KeyEventArgs e)

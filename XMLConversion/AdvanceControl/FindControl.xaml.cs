@@ -21,18 +21,39 @@ namespace XMLConversion
     public partial class FindControl : UserControl
     {
         #region 전역변수
-        TextBoxString Source = new TextBoxString();
+        FindString Source = new FindString();
         public Window Owner;
         #endregion
+
         public FindControl()
         {
             InitializeComponent();
-            this.Loaded += OnLoaded;
+            SetDataContext();
+            Init();
+
+
+            #region Event
+            this.cancelButton.Click += OnCancelButtonClick;
+            #endregion
         }
 
-        void OnLoaded(object sender,RoutedEventArgs e)
+        private void OnCancelButtonClick(object sender, RoutedEventArgs e)
         {
-
+            this.Owner.Close();
         }
+
+        void Init()
+        {
+            Source.Text = string.Empty;
+            Source.CheckDown = true;
+            Source.CheckUp = false;
+            Source.CheckSmallAndBig = false;
+        }
+
+        void SetDataContext()
+        {
+            this.MainGrid.DataContext = Source;
+        }
+        
     }
 }
