@@ -21,14 +21,14 @@ namespace XMLConversion.BaseControl
 
         public FontInfo()
         { }
-        public FontInfo(FontFamily ffm,double sz,FontStyle style,FontWeight fw,FontStretch stretch,FontWeight weight,SolidColorBrush color)
+        public FontInfo(FontFamily fontFamily, double fontSize, FontStyle fontStyle, FontStretch fontStretch, FontWeight fontWeight, SolidColorBrush brush)
         {
-            this.Family = ffm;
-            this.Size = sz;
-            this.Style = style;
-            this.Weight = weight;
-            this.Stretch = stretch;
-            this.BrushColor = color;
+            this.Family= fontFamily;
+            this.Size = fontSize;
+            this.Style= fontStyle;
+            this.Stretch= fontStretch;
+            this.Weight= fontWeight;
+            this.BrushColor= brush;
         }
 
 

@@ -98,10 +98,21 @@ namespace XMLConversion
         void OnfontMenuKeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.F)
-            { }
-            FontWindow fw = new FontWindow();
-            fw.Title = "글꼴";
-            fw.ShowDialog();
+            {
+                FontWindow fw = new FontWindow();
+                fw.Title = "글꼴";
+                fw.Owner = Owner;
+                fw.Font = FontInfo.GetControlFont(this.beforeTextBox);
+                if (fw.ShowDialog() == true)
+                {
+                    FontInfo selectedFont = fw.Font;
+                    if (selectedFont != null)
+                    {
+                        FontInfo.ApplyFont(this.beforeTextBox, selectedFont);
+                        FontInfo.ApplyFont(this.afterTextBox, selectedFont);
+                    }
+                }
+            }
         }
 
         void EditCommandHandler(object sender, ExecutedRoutedEventArgs e)

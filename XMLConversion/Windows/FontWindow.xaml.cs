@@ -47,12 +47,13 @@ namespace XMLConversion.Windows
 
         private void OnCancelButtonClick(object sender, RoutedEventArgs e)
         {
-            this.Font=this.FontControl.
+            this.Close();
         }
 
         private void OnConfirmButtonClick(object sender, RoutedEventArgs e)
-        {
-            this.Close();
+        { 
+            this.Font = this.FontControl.SelectedFont;
+            this.DialogResult = true;
         }
 
         private void OnPopUpWindowKeyDown(object sender, KeyEventArgs e)
@@ -63,8 +64,55 @@ namespace XMLConversion.Windows
 
         private void OnLoaded(object sender, RoutedEventArgs e)
         {
-            this.FontControl.colorPicker.colorComboBox.SelectedIndex = 7;
-            
+            this.ApplyFontColor();
+            this.ApplyFontName();
+            this.ApplyFontSize();
+            this.ApplyFontTypeFace();
+            this.FontControl.colorPicker.colorComboBox.SelectedIndex = 1;
+        }
+
+        private void ApplyFontColor()
+        {
+            int colorIndex = AvailableColors.GetFontColorIndex(this.Font.Color);
+            this.FontControl.colorPicker.colorComboBox.SelectedIndex = colorIndex;
+            this.FontControl.colorPicker.colorComboBox.BringIntoView();
+
+        }
+        private void ApplyFontName()
+        {
+            string fontFamilyName = this.selectedFont.Family.Source;
+            int idx = 0;
+            foreach(var item in this.FontControl.fontFamilyList.Items)
+            {
+                string itemName = item.ToString();
+                if(fontFamilyName==itemName)
+                {
+                    break;
+                }
+                idx++;
+            }
+            this.FontControl.fontFamilyList.SelectedIndex = idx;
+            //this.FontControl.fontFamilyList.ScrollIntoView(this.FontControl.fontFamilyList.Items[idx]);
+        }
+        private void ApplyFontSize()
+        {
+            double fontSize = this.selectedFont.Size;
+            this.FontControl.fontSizeSlider.Value = fontSize;
+        }
+        private void ApplyFontTypeFace()
+        {
+            string fontTypeFaceName = FontInfo.TypefaceToString(this.selectedFont.TypeFace);
+            int idx = 0;
+            foreach(var item in this.FontControl.fontTypeList.Items)
+            {
+                FamilyTypeface face = item as FamilyTypeface;
+                if(fontTypeFaceName==FontInfo.TypefaceToString(face))
+                {
+                    break;
+                }
+                idx++;
+            }
+            this.FontControl.fontTypeList.SelectedIndex = idx;
         }
         
     }

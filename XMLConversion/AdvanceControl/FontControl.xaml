@@ -48,8 +48,9 @@
         <Grid Grid.Row="1" Grid.Column="2"   >
             <TextBox x:Name="sampleTextBox"
             Padding="20"
+            Foreground="{Binding SelectedColor.Brush, ElementName=colorPicker}"
             FontSize="{Binding Value, ElementName=fontSizeSlider }"
-            FontFamily="{Binding Source, Source={StaticResource familyCollection}}" 
+            FontFamily="{Binding SelectedItem.FontFamily, ElementName=fontFamilyList}" 
             FontWeight="{Binding SelectedItem.Weight, ElementName=fontTypeList}" 
             FontStretch="{Binding SelectedItem.Stretch, ElementName=fontTypeList}" 
             FontStyle="{Binding SelectedItem.Style, ElementName=fontTypeList}"

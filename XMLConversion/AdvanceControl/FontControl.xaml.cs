@@ -25,12 +25,12 @@ namespace XMLConversion
         {
             get
             {
-                //return new FontInfo(this.txtSampleText.FontFamily,
-                //                    this.txtSampleText.FontSize,
-                //                    this.txtSampleText.FontStyle,
-                //                    this.txtSampleText.FontStretch,
-                //                    this.txtSampleText.FontWeight,
-                //                    this.colorPicker.SelectedColor.Brush);
+                return new FontInfo(this.sampleTextBox.FontFamily,
+                                    this.sampleTextBox.FontSize,
+                                    this.sampleTextBox.FontStyle,
+                                    this.sampleTextBox.FontStretch,
+                                    this.sampleTextBox.FontWeight,
+                                    this.colorPicker.SelectedColor.Brush);
             }
 
         }
@@ -40,8 +40,7 @@ namespace XMLConversion
         public FontControl()
         {
             InitializeComponent();
-
-           
+            this.sampleTextBox.IsReadOnly = true;
         }
 
         

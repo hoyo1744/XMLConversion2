@@ -24,6 +24,9 @@ namespace XMLConversion.AdvanceControl
     {
         private ColorComboBox source;
 
+        public static readonly RoutedEvent ColorChangedEvent = EventManager.RegisterRoutedEvent(
+            "ColorChanged", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(ColorPicker));
+
         public static readonly DependencyProperty SelectedColorProperty = DependencyProperty.Register(
             "SelectedColor", typeof(FontColor), typeof(ColorPicker), new UIPropertyMetadata(null));
 
@@ -46,6 +49,16 @@ namespace XMLConversion.AdvanceControl
             }
         }
 
+        public event RoutedEventHandler ColorChanged
+        {
+            add { AddHandler(ColorChangedEvent, value); }
+            remove { RemoveHandler(ColorChangedEvent, value); }
+        }
+        private void RaiseColorChangedEvent()
+        {
+            RoutedEventArgs newEventArgs = new RoutedEventArgs(ColorPicker.ColorChangedEvent);
+            RaiseEvent(newEventArgs);
+        }
         public ColorPicker()
         {
             InitializeComponent();
@@ -71,9 +84,8 @@ namespace XMLConversion.AdvanceControl
         private void OnDropDownClosed(object sender, EventArgs e)
         {
             this.SetValue(SelectedColorProperty, this.source.SelectedFontColor);
+            this.RaiseColorChangedEvent();
         }
-
-        
 
         public void Init()
         {
