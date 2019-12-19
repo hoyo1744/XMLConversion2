@@ -170,7 +170,10 @@ namespace XMLConversion
         void FindCommandHandler(object sender, ExecutedRoutedEventArgs e)
         {
             popUpWindow popUp = new popUpWindow();
-            popUp.Owner = Owner;
+            FindControl findControl = new FindControl();
+            findControl.Owner = popUp;
+            findControl.ParentOwner = Owner;
+            popUp.MainGrid.Children.Add(findControl);
             popUp.Title = "찾기";
             popUp.Show();
         }

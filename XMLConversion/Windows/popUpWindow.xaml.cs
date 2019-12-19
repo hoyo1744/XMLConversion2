@@ -30,13 +30,16 @@ namespace XMLConversion
             this.KeyDown += OnPopUpWindowKeyDown;
             #endregion
         }
-        public popUpWindow(object sender)
+        public popUpWindow(Control obj)
         {
             InitializeComponent();
 
             #region Event
             this.Loaded += OnLoaded;
+            this.KeyDown += OnPopUpWindowKeyDown;
             #endregion
+            
+            this.MainGrid.Children.Add(obj);
         }
         void OnPopUpWindowKeyDown(object sender,KeyEventArgs e)
         {
@@ -45,8 +48,7 @@ namespace XMLConversion
         }
         void OnLoaded(object sender,RoutedEventArgs e)
         {
-            FindControl findControl = new FindControl();
-            this.MainGrid.Children.Add(findControl);
+            
         }
     }
 }

@@ -22,7 +22,7 @@ namespace XMLConversion
     public partial class MainWindow : Window
     {
         #region 전역변수
-        Worker worker;
+        public Worker worker;
         #endregion
 
 

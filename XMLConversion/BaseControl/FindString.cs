@@ -78,6 +78,24 @@ namespace XMLConversion.BaseControl
             }
         }
 
+        /// <summary>
+        /// 찾기 시작할 위치의 인덱스
+        /// </summary>
+        private int index;
+        public int Index
+        {
+            get
+            {
+                return index;
+            }
+            set
+            {
+                if (index == value)
+                    return;
+                Notify("Index");
+                index = value;
+            }
+        }
 
      
 
