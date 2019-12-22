@@ -36,8 +36,17 @@ namespace XMLConversion
             #region Event
             this.cancelButton.Click += OnCancelButtonClick;
             this.findButton.Click += OnFindButtonClick;
+            this.Loaded += OnFindControlLoaded;
             #endregion
+
+
         }
+
+        private void OnFindControlLoaded(object sender, RoutedEventArgs e)
+        {
+
+        }
+
         private void OnFindButtonClick(object sender,RoutedEventArgs e)
         {
             Find();
@@ -49,34 +58,63 @@ namespace XMLConversion
 
         void Find()
         {
-            
-            string sourceStr= Source.Text.ToString();
-            string targetStr = ((MainWindow)ParentOwner).worker.afterTextBox.ToString();
+            string sourceStr= Source.Text.ToString();// 검색하고자 하는 단어
+            string targetStr = ((MainWindow)ParentOwner).worker.afterTextBox.Text; //전체 텍스트
+
+
+            if(sourceStr.Length==0)
+            {
+                if (MessageBox.Show("단어를 입력해주세요.", "Error", MessageBoxButton.OK, MessageBoxImage.Error, MessageBoxResult.OK) == MessageBoxResult.OK)
+                    return;
+            }
 
             int idx = Source.Index; //상대위치
             int findIdx = 0;    //절대위치
             int sourceStrLen = sourceStr.Length;
 
+            //대소문자 구문
             if (Source.CheckSmallAndBig == false)
             {
                 targetStr = targetStr.ToUpper();
                 sourceStr = sourceStr.ToUpper();
             }
 
+            //아래로 검색
             if(Source.CheckDown==true)
             {
-                findIdx = sourceStr.IndexOf(targetStr, idx);
-                idx = findIdx;
+                findIdx = targetStr.IndexOf(sourceStr, idx);
+                if(findIdx==-1)
+                {
+                    if (MessageBox.Show("더 이상 단어를 찾을 수 없습니다.", "Error", MessageBoxButton.OK, MessageBoxImage.Error, MessageBoxResult.OK) == MessageBoxResult.OK)
+                        return;
+                }
+                idx = findIdx+1;
+                Source.Index = idx;
             }
+            //위로 검색
             else if(Source.CheckUp==true)
             {
-                findIdx = sourceStr.Reverse().ToString().IndexOf(targetStr, sourceStrLen-idx+1);
-                idx = sourceStrLen-findIdx+1;
+                findIdx = targetStr.Reverse().ToString().IndexOf(sourceStr, targetStr.Length-idx+1);
+                if(findIdx==-1)
+                {
+                    if (MessageBox.Show("더 이상 단어를 찾을 수 없습니다.", "Error", MessageBoxButton.OK, MessageBoxImage.Error, MessageBoxResult.OK) == MessageBoxResult.OK)
+                        return;
+                }
+                idx = sourceStrLen-findIdx;
+                Source.Index = idx;
             }
 
-            //1)검색된 부분 하이라이트
+            //검색된 부분 하이라이트
+            ((MainWindow)ParentOwner).worker.afterTextBox.Select(findIdx, sourceStr.Length);
+            ((MainWindow)ParentOwner).worker.afterTextBox.SelectionBrush = Brushes.Red;
 
-            //2)검색된 부분으로 스크롤 이동
+            //검색된 부분으로 스크롤 이동
+            
+
+
+            //포커스 넘겨주기
+            ((MainWindow)ParentOwner).worker.afterTextBox.Focus();
+
         }
         void Init()
         {
@@ -85,6 +123,7 @@ namespace XMLConversion
             Source.CheckUp = false;
             Source.CheckSmallAndBig = false;
             Source.Index = 0;
+
         }
 
         void SetDataContext()

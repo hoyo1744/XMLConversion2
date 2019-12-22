@@ -29,6 +29,8 @@ namespace XMLConversion
         TextBoxString textBeforeTransfer = new TextBoxString();//변환전 텍스트(바인딩 원본)
         TextBoxString textAfterTransfer = new TextBoxString();//변환후 텍스트(바인딩 원본)
         public Window Owner;
+        double findControlLeft= 0;
+        double findControlTop = 0;
         #endregion
 
         public Worker()
@@ -40,7 +42,7 @@ namespace XMLConversion
 
             #region Event
             this.beforeTextBox.TextChanged += OnTextChanged;
-            this.afterTextBox.TextChanged += OnTextChanged;
+            //this.afterTextBox.TextChanged += OnTextChanged;
             this.fontMenu.KeyDown += OnfontMenuKeyDown;
             this.fontMenu.Click += OnfontMenuClick;
             this.newMenu.KeyDown += OnNewMenuKeyDown;
@@ -169,17 +171,20 @@ namespace XMLConversion
         }
         void FindCommandHandler(object sender, ExecutedRoutedEventArgs e)
         {
-            popUpWindow popUp = new popUpWindow();
-            FindControl findControl = new FindControl();
-            findControl.Owner = popUp;
-            findControl.ParentOwner = Owner;
-            popUp.MainGrid.Children.Add(findControl);
-            popUp.Title = "찾기";
-            popUp.Show();
+                FindControl findControl = new FindControl(); //1개만 생성되어야함.
+                popUpWindow popUp = new popUpWindow(); // 1개만 생성되어야함.
+                popUp.MainGrid.Children.Clear();
+                findControl.Owner = popUp;
+                findControl.ParentOwner = Owner;
+                popUp.MainGrid.Children.Add(findControl);
+                popUp.Title = "찾기";
+                popUp.Show();
+
         }
         void SetDataContext()
         {
             this.beforeTextBox.DataContext = textBeforeTransfer;
+            this.afterTextBox.DataContext = textAfterTransfer;
         }
         void OnTextChanged(Object sender, RoutedEventArgs e)
         {
@@ -204,19 +209,20 @@ namespace XMLConversion
         void TrasnferXMLText()
         {
             /*xDocument객체로 처리하기*/
-            afterTextBox.Text = textBeforeTransfer.Text;
-            string str = afterTextBox.Text;
+            textAfterTransfer.Text= textBeforeTransfer.Text;
+            //afterTextBox.Text = textBeforeTransfer.Text;
+            string str = textAfterTransfer.Text;
 
             try
             {
                 XDocument xdoc = XDocument.Parse(str);
-                afterTextBox.Text = xdoc.ToString();
+                textAfterTransfer.Text = xdoc.ToString();
             }
             catch (Exception e)
             {
                 if (MessageBox.Show("올바른 XML 형식이 아닙니다.", "Error", MessageBoxButton.OK, MessageBoxImage.Error, MessageBoxResult.OK) == MessageBoxResult.OK)
                 {
-                    afterTextBox.Text = string.Empty;
+                    textAfterTransfer.Text = string.Empty;
                     return;
                 }
             }

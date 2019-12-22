@@ -21,21 +21,22 @@ namespace XMLConversion
     /// </summary>
     public partial class popUpWindow : Window
     {
+        // 아래의 생성자는 사용하지 않음
         public popUpWindow()
         {
             InitializeComponent();
 
             #region Event
-            this.Loaded += OnLoaded;
             this.KeyDown += OnPopUpWindowKeyDown;
             #endregion
         }
+
+    
         public popUpWindow(Control obj)
         {
             InitializeComponent();
 
             #region Event
-            this.Loaded += OnLoaded;
             this.KeyDown += OnPopUpWindowKeyDown;
             #endregion
             
@@ -46,9 +47,7 @@ namespace XMLConversion
             if(e.Key==Key.Escape)
                 this.Close();
         }
-        void OnLoaded(object sender,RoutedEventArgs e)
-        {
-            
-        }
+
+
     }
 }

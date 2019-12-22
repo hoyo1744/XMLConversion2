@@ -31,7 +31,7 @@
         <StackPanel Orientation="Vertical" Grid.Column="0">
             <StackPanel Orientation="Horizontal">
                 <TextBlock x:Name="findTextBlock" Text="찾을 내용" VerticalAlignment="Center"/>
-                <TextBox x:Name="findTextBox" Width="150" Text="{Binding Path=Text}"/>
+                <TextBox x:Name="findTextBox" Width="150" Text="{Binding Path=Text, UpdateSourceTrigger=PropertyChanged}"/>
             </StackPanel>
             <Grid>
                 
