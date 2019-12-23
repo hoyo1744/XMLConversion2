@@ -33,7 +33,8 @@
         <Border Grid.Row="3" Background="Black"/>
         <TextBlock x:Name="afterTextBlock" Grid.Row="4" Text="변환 후" Background="Red"/>
         <ScrollViewer Grid.Row="5" HorizontalScrollBarVisibility="Auto" x:Name="DownScrollViewer">
-                <TextBox x:Name="afterTextBox" IsReadOnly="True" FontStyle="Italic" Text="{Binding Path=Text,UpdateSourceTrigger=PropertyChanged}"/>
+            <TextBox x:Name="afterTextBox" IsReadOnly="True" FontStyle="Italic" Text="{Binding Path=Text,UpdateSourceTrigger=PropertyChanged}"/>
+            <!--<RichTextBox x:Name="afterTextBox" IsReadOnly="true" FontStyle="Italic" ="{Binding Path=Text,UpdateSourceTrigger=PropertyChanged}"/>-->
         </ScrollViewer>
         
     </Grid>

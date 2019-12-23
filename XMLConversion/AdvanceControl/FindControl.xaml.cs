@@ -33,45 +33,18 @@ namespace XMLConversion
             Init();
 
             #region Event
-            this.cancelButton.Click += OnCancelButtonClick;
             this.findButton.Click += OnFindButtonClick;
-            this.KeyDown += OnKeyDown;
             #endregion
 
 
         }
-
-        private void OnKeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.Key == Key.Enter)
-            {
-                if (this.cancelButton.IsFocused == true)
-                {
-                    this.Owner.Close();
-                }
-                else
-                {
-                    Find();
-                }
-            }
-            else if (e.Key == Key.Escape)
-            {
-                this.Owner.Close();
-            }
-        }
-    
-        
         private void OnFindButtonClick(object sender,RoutedEventArgs e)
         {
 
             Find();
         }
-        private void OnCancelButtonClick(object sender, RoutedEventArgs e)
-        {
-            this.Owner.Close();
-        }
 
-        void Find()
+        public void Find()
         {
             string sourceStr= Source.Text.ToString();// 검색하고자 하는 단어
             string targetStr = ((MainWindow)ParentOwner).worker.afterTextBox.Text; //전체 텍스트
@@ -124,8 +97,10 @@ namespace XMLConversion
             ((MainWindow)ParentOwner).worker.afterTextBox.SelectionBrush = Brushes.Red;
 
             //검색된 부분으로 스크롤 이동
-            
 
+            int startIdx = ((MainWindow)ParentOwner).worker.afterTextBox.SelectionStart;
+            int lineIdx = ((MainWindow)ParentOwner).worker.afterTextBox.GetLineIndexFromCharacterIndex(idx);
+            ((MainWindow)ParentOwner).worker.afterTextBox.ScrollToLine(lineIdx);
 
             //포커스 넘겨주기
             ((MainWindow)ParentOwner).worker.afterTextBox.Focus();

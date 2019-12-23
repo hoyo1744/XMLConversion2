@@ -29,6 +29,7 @@ namespace XMLConversion
         TextBoxString textBeforeTransfer = new TextBoxString();//변환전 텍스트(바인딩 원본)
         TextBoxString textAfterTransfer = new TextBoxString();//변환후 텍스트(바인딩 원본)
         public Window Owner;
+
         #endregion
 
         public Worker()
@@ -90,9 +91,8 @@ namespace XMLConversion
             #endregion
 
 
+
             
-
-
         }
 
         void OnNewMenuKeyDown(object sender, KeyEventArgs e)
@@ -171,13 +171,22 @@ namespace XMLConversion
         }
         void FindCommandHandler(object sender, ExecutedRoutedEventArgs e)
         {
-                FindControl findControl = new FindControl(); //1개만 생성되어야함.
-                popUpWindow popUp = new popUpWindow(findControl); // 1개만 생성되어야함.
-                findControl.findTextBox.Focus();
-                findControl.ParentOwner = Owner;
-                findControl.Owner = popUp;
-                popUp.Title = "찾기";
-                popUp.Show();
+            if(FindWindow.Instance!=null)
+            {
+                FindWindow.Instance.Close();
+                FindWindow.Instance.Owner = Owner;
+                FindWindow.Instance.Title = "찾기";
+                FindWindow.Instance.ParentOwner = Owner;
+                FindWindow.Instance.Show();
+            }
+            else
+            {
+                FindWindow.Instance.Owner = Owner;
+                FindWindow.Instance.Title = "찾기";
+                FindWindow.Instance.ParentOwner = Owner;
+                FindWindow.Instance.Show();
+            }
+            
 
         }
         void SetDataContext()
