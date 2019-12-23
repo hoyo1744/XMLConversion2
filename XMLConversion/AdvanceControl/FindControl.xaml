@@ -43,8 +43,8 @@
                     <StackPanel Orientation="Horizontal">
                         <GroupBox Header="방향">
                             <StackPanel Orientation="Horizontal">
-                                <RadioButton Content="위로" IsChecked="{Binding Path=CheckUp}"/>
-                                <RadioButton Content="아래로" IsChecked="{Binding Path=CheckDown}"/>
+                                <RadioButton x:Name="upRadioButton" Content="위로" IsChecked="{Binding Path=CheckUp}"/>
+                                <RadioButton x:Name="downRadioButton" Content="아래로" IsChecked="{Binding Path=CheckDown}"/>
                             </StackPanel>
                         </GroupBox>
                     </StackPanel>
@@ -53,9 +53,9 @@
                 
             </Grid>
         </StackPanel>
-        <StackPanel Orientation="Vertical" Grid.Column="1">
+        <StackPanel Orientation="Vertical" Grid.Column="1" >
             <Button x:Name="findButton" Height="20" Width="80" Content="다음찾기"/>
-            <Button x:Name="cancelButton" Height="20" Width="80" Content="취소"/>
+            <Button x:Name="cancelButton" Height="20" Width="80" Content="취소" />
         </StackPanel>
 
 

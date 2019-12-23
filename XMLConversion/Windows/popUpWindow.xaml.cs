@@ -27,7 +27,6 @@ namespace XMLConversion
             InitializeComponent();
 
             #region Event
-            this.KeyDown += OnPopUpWindowKeyDown;
             #endregion
         }
 
@@ -37,17 +36,10 @@ namespace XMLConversion
             InitializeComponent();
 
             #region Event
-            this.KeyDown += OnPopUpWindowKeyDown;
             #endregion
             
             this.MainGrid.Children.Add(obj);
         }
-        void OnPopUpWindowKeyDown(object sender,KeyEventArgs e)
-        {
-            if(e.Key==Key.Escape)
-                this.Close();
-        }
-
 
     }
 }

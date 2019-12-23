@@ -59,6 +59,9 @@
     <Compile Include="AdvanceControl\ColorPicker.xaml.cs">
       <DependentUpon>ColorPicker.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AdvanceControl\ScrollInfoTextBox.xaml.cs">
+      <DependentUpon>ScrollInfoTextBox.xaml</DependentUpon>
+    </Compile>
     <Compile Include="BaseControl\ColorComboBox.cs" />
     <Compile Include="BaseControl\AvailableColors.cs" />
     <Compile Include="BaseControl\FindString.cs" />
@@ -93,6 +96,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="AdvanceControl\FontControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AdvanceControl\ScrollInfoTextBox.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

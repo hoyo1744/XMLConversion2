@@ -26,9 +26,15 @@
             </MenuItem>
         </Menu>
         <TextBlock x:Name="beforeTextBlock" Grid.Row="1" Text="변환 전" Background="Red"/>
-        <TextBox x:Name="beforeTextBox" Grid.Row="2" Text="{Binding Path=Text, UpdateSourceTrigger=PropertyChanged}" AcceptsReturn="True"/>
+        <ScrollViewer Grid.Row="2" HorizontalScrollBarVisibility="auto" x:Name="TopScrollViewer">
+            <TextBox x:Name="beforeTextBox"  Text="{Binding Path=Text, UpdateSourceTrigger=PropertyChanged}" AcceptsReturn="True"/>
+        </ScrollViewer>
+        
         <Border Grid.Row="3" Background="Black"/>
         <TextBlock x:Name="afterTextBlock" Grid.Row="4" Text="변환 후" Background="Red"/>
-        <TextBox x:Name="afterTextBox" Grid.Row="5" IsReadOnly="True" FontStyle="Italic" Text="{Binding Path=Text,UpdateSourceTrigger=PropertyChanged}"/>
+        <ScrollViewer Grid.Row="5" HorizontalScrollBarVisibility="Auto" x:Name="DownScrollViewer">
+                <TextBox x:Name="afterTextBox" IsReadOnly="True" FontStyle="Italic" Text="{Binding Path=Text,UpdateSourceTrigger=PropertyChanged}"/>
+        </ScrollViewer>
+        
     </Grid>
 </UserControl>

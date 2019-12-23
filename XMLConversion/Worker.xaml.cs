@@ -29,8 +29,6 @@ namespace XMLConversion
         TextBoxString textBeforeTransfer = new TextBoxString();//변환전 텍스트(바인딩 원본)
         TextBoxString textAfterTransfer = new TextBoxString();//변환후 텍스트(바인딩 원본)
         public Window Owner;
-        double findControlLeft= 0;
-        double findControlTop = 0;
         #endregion
 
         public Worker()
@@ -91,6 +89,8 @@ namespace XMLConversion
             //this.InputBindings.Add(ibNew);
             #endregion
 
+
+            
 
 
         }
@@ -172,11 +172,10 @@ namespace XMLConversion
         void FindCommandHandler(object sender, ExecutedRoutedEventArgs e)
         {
                 FindControl findControl = new FindControl(); //1개만 생성되어야함.
-                popUpWindow popUp = new popUpWindow(); // 1개만 생성되어야함.
-                popUp.MainGrid.Children.Clear();
-                findControl.Owner = popUp;
+                popUpWindow popUp = new popUpWindow(findControl); // 1개만 생성되어야함.
+                findControl.findTextBox.Focus();
                 findControl.ParentOwner = Owner;
-                popUp.MainGrid.Children.Add(findControl);
+                findControl.Owner = popUp;
                 popUp.Title = "찾기";
                 popUp.Show();
 

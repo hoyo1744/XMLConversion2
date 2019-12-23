@@ -32,23 +32,38 @@ namespace XMLConversion
             SetDataContext();
             Init();
 
-
             #region Event
             this.cancelButton.Click += OnCancelButtonClick;
             this.findButton.Click += OnFindButtonClick;
-            this.Loaded += OnFindControlLoaded;
+            this.KeyDown += OnKeyDown;
             #endregion
 
 
         }
 
-        private void OnFindControlLoaded(object sender, RoutedEventArgs e)
+        private void OnKeyDown(object sender, KeyEventArgs e)
         {
-
+            if (e.Key == Key.Enter)
+            {
+                if (this.cancelButton.IsFocused == true)
+                {
+                    this.Owner.Close();
+                }
+                else
+                {
+                    Find();
+                }
+            }
+            else if (e.Key == Key.Escape)
+            {
+                this.Owner.Close();
+            }
         }
-
+    
+        
         private void OnFindButtonClick(object sender,RoutedEventArgs e)
         {
+
             Find();
         }
         private void OnCancelButtonClick(object sender, RoutedEventArgs e)
@@ -94,13 +109,13 @@ namespace XMLConversion
             //위로 검색
             else if(Source.CheckUp==true)
             {
-                findIdx = targetStr.Reverse().ToString().IndexOf(sourceStr, targetStr.Length-idx+1);
+                findIdx = targetStr.LastIndexOf(sourceStr, idx);
                 if(findIdx==-1)
                 {
                     if (MessageBox.Show("더 이상 단어를 찾을 수 없습니다.", "Error", MessageBoxButton.OK, MessageBoxImage.Error, MessageBoxResult.OK) == MessageBoxResult.OK)
                         return;
                 }
-                idx = sourceStrLen-findIdx;
+                idx = findIdx+1;
                 Source.Index = idx;
             }
 
@@ -123,7 +138,7 @@ namespace XMLConversion
             Source.CheckUp = false;
             Source.CheckSmallAndBig = false;
             Source.Index = 0;
-
+            this.findTextBox.Focus();
         }
 
         void SetDataContext()

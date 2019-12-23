@@ -38,13 +38,14 @@ namespace XMLConversion.Windows
 
 
             #region Event
-            this.Loaded += OnLoaded;
             this.KeyDown += OnPopUpWindowKeyDown;
+            this.Loaded += OnLoaded;
             this.FontControl.confirmButton.Click += OnConfirmButtonClick;
             this.FontControl.cancelButton.Click += OnCancelButtonClick;
             #endregion
         }
 
+        
         private void OnCancelButtonClick(object sender, RoutedEventArgs e)
         {
             this.Close();
@@ -68,6 +69,7 @@ namespace XMLConversion.Windows
             this.ApplyFontName();
             this.ApplyFontSize();
             this.ApplyFontTypeFace();
+
             
         }
 
