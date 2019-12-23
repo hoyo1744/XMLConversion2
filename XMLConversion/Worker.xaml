@@ -27,14 +27,13 @@
         </Menu>
         <TextBlock x:Name="beforeTextBlock" Grid.Row="1" Text="변환 전" Background="Red"/>
         <ScrollViewer Grid.Row="2" HorizontalScrollBarVisibility="auto" x:Name="TopScrollViewer">
-            <TextBox x:Name="beforeTextBox"  Text="{Binding Path=Text, UpdateSourceTrigger=PropertyChanged}" AcceptsReturn="True"/>
+            <TextBox x:Name="beforeTextBox"  Text="{Binding Path=Text, UpdateSourceTrigger=PropertyChanged}" AcceptsReturn="True" TextWrapping="Wrap"/>
         </ScrollViewer>
         
         <Border Grid.Row="3" Background="Black"/>
         <TextBlock x:Name="afterTextBlock" Grid.Row="4" Text="변환 후" Background="Red"/>
         <ScrollViewer Grid.Row="5" HorizontalScrollBarVisibility="Auto" x:Name="DownScrollViewer">
-            <TextBox x:Name="afterTextBox" IsReadOnly="True" FontStyle="Italic" Text="{Binding Path=Text,UpdateSourceTrigger=PropertyChanged}"/>
-            <!--<RichTextBox x:Name="afterTextBox" IsReadOnly="true" FontStyle="Italic" ="{Binding Path=Text,UpdateSourceTrigger=PropertyChanged}"/>-->
+            <TextBox  x:Name="afterTextBox" IsReadOnly="True" Text="{Binding Path=Text,UpdateSourceTrigger=PropertyChanged}"  TextWrapping="Wrap" AcceptsReturn="True"/>
         </ScrollViewer>
         
     </Grid>

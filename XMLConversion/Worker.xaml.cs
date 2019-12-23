@@ -192,7 +192,6 @@ namespace XMLConversion
         void SetDataContext()
         {
             this.beforeTextBox.DataContext = textBeforeTransfer;
-            this.afterTextBox.DataContext = textAfterTransfer;
         }
         void OnTextChanged(Object sender, RoutedEventArgs e)
         {
@@ -216,15 +215,12 @@ namespace XMLConversion
         }
         void TrasnferXMLText()
         {
-            /*xDocument객체로 처리하기*/
-            textAfterTransfer.Text= textBeforeTransfer.Text;
-            //afterTextBox.Text = textBeforeTransfer.Text;
-            string str = textAfterTransfer.Text;
-
             try
             {
-                XDocument xdoc = XDocument.Parse(str);
-                textAfterTransfer.Text = xdoc.ToString();
+                XDocument xdoc = XDocument.Parse(textBeforeTransfer.Text);
+                // 바인딩으로 하면 안되고, 직접 값을 매핑하면 된다.. .왜?
+                afterTextBox.Text = xdoc.ToString();
+                
             }
             catch (Exception e)
             {
