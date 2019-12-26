@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:XMLConversion"
              xmlns:m="clr-namespace:XMLConversion.Command"
              mc:Ignorable="d" 
-             d:DesignHeight="600" d:DesignWidth="300">
+             d:DesignHeight="600" d:DesignWidth="300" >
     <Grid x:Name="MainGrid">
         <Grid.RowDefinitions>
             <RowDefinition Height="20" />
